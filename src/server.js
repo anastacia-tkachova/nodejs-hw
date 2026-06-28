@@ -17,14 +17,7 @@ app.use(
         colorize: true,
         translateTime: 'HH:MM:ss',
         ignore: 'pid,hostname',
-        messageFormat: (log, messageKey) => {
-          const req = log.req;
-          const res = log.res;
-          if (req && res) {
-            return `${req.method} ${req.url} ${res.statusCode} - ${log.responseTime}ms`;
-          }
-          return log[messageKey] || '';
-        },
+        messageFormat: '{req.method} {req.url} {res.statusCode} - {responseTime}ms',
         hideObject: true,
       },
     },
