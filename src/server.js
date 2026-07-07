@@ -15,13 +15,11 @@ dns.setServers(['8.8.8.8', '8.8.4.4']);
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
+app.use(logger);
 app.use(express.json({
   type: ['application/json', 'application/vnd.api+json'],
   limit: '100kb',
 }));
-
-app.use(logger);
-app.use(express.json());
 app.use(cors());
 
 app.use(notesRoutes);
