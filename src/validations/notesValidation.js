@@ -31,10 +31,10 @@ export const createNoteSchema = {
       "string.max": "Title should have at most {#limit} characters",
       "any.required": "Title is required",
     }),
-    content: Joi.string().max(65).messages({
+    content: Joi.string().max(65).allow("").optional().messages({
       "string.max": "Content should have at most {#limit} characters",
     }),
-    tag: Joi.string().valid(...TAGS).messages({
+    tag: Joi.string().valid(...TAGS).optional().messages({
       "any.only": "Tag must be one of: 'Work','Personal','Meeting','Shopping','Ideas','Travel','Finance','Health','Important','Todo'",
     }),
   }),
