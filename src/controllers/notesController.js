@@ -1,4 +1,4 @@
-import { TAGS } from '../constants/tags.js';
+// import { TAGS } from '../constants/tags.js';
 import { Note } from '../models/note.js';
 import createHttpError from 'http-errors';
 
@@ -6,7 +6,7 @@ export const getAllNotes = async (req, res) => {
   const { page = 1, perPage = 10, tag, search } = req.query;
   const skip = (page - 1) * perPage;
 
-  const notesQuery = await Note.find({});
+  const notesQuery = Note.find({});
 
 
   if (search) {
@@ -19,7 +19,7 @@ export const getAllNotes = async (req, res) => {
   }
 
   if (tag) {
-    notesQuery.where("tag").equals(TAGS);
+    notesQuery.where("tag").equals(tag);
   };
 
   const [totalNotes, notes] = await Promise.all([
