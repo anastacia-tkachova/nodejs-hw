@@ -12,6 +12,7 @@ import { errorHandler } from './middleware/errorHandler.js';
 import notesRoutes from './routes/notesRoutes.js';
 
 import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 
@@ -28,6 +29,7 @@ app.use(cookieParser());
 
 app.use(authRoutes);
 app.use(notesRoutes);
+app.use(userRoutes);
 
 app.use(notFoundHandler);
 app.use(errors());
